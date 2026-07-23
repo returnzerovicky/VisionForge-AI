@@ -1,0 +1,14 @@
+torch
+torchvision
+transformers
+accelerate
+sentencepiece
+opencv-python
+pillow
+numpy
+pandas
+streamlit
+matplotlib
+huggingface_hub
+timm
+einops

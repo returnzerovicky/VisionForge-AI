@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+.env
+.vscode/
+.idea/
+
+models/
+outputs/
+checkpoints/
+
+*.pth
+*.pt
+*.ckpt
+
+.DS_Store
