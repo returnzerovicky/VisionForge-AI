@@ -8,17 +8,19 @@ class VisionForgeModel:
     def __init__(self):
 
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
-
         print(f"Using device: {self.device}")
 
-        self.model_name = "HuggingFaceTB/SmolVLM-256M-Instruct"
+        self.model_id = "HuggingFaceTB/SmolVLM-256M-Instruct"
 
-        self.processor = AutoProcessor.from_pretrained(self.model_name)
+        self.processor = AutoProcessor.from_pretrained(self.model_id)
 
         self.model = AutoModelForVision2Seq.from_pretrained(
-            self.model_name,
+            self.model_id,
             torch_dtype=torch.float16 if self.device == "cuda" else torch.float32
         ).to(self.device)
+
+    def get_model_name(self):
+        return self.model_id
 
     def ask(self, image_path, question):
 
@@ -50,9 +52,7 @@ class VisionForgeModel:
             max_new_tokens=256
         )
 
-        output = self.processor.batch_decode(
+        return self.processor.batch_decode(
             generated_ids,
             skip_special_tokens=True
         )[0]
-
-        return output

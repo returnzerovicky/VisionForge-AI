@@ -13,3 +13,7 @@ checkpoints/
 *.ckpt
 
 .DS_Store
+
+reports/results.csv
+logs/
+*.log
